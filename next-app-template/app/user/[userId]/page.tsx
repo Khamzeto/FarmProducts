@@ -223,20 +223,20 @@ export default function ViewUserProfile() {
           </ActionIcon>
         </Card.Section>
 
-        <Group position="apart" mt="md" mb="xs">
-          <Text weight={500}>{title}</Text>
+        <Group mt="md" mb="xs">
+          <Text>{title}</Text>
           <Text color="dimmed" size="xs">
             {description}
           </Text>
         </Group>
 
-        <Group mt="xs" spacing="xs">
+        <Group mt="xs">
           {oldPrice && (
             <Text color="dimmed" style={{ textDecoration: 'line-through' }}>
               {oldPrice} ₽
             </Text>
           )}
-          <Text weight={700} color="red" size="xl">
+          <Text color="red" size="xl">
             {price} ₽
           </Text>
         </Group>
@@ -274,7 +274,7 @@ export default function ViewUserProfile() {
             >
               <IconMinus size={16} />
             </ActionIcon>
-            <Text weight={700} size="lg" style={{ margin: '0 15px' }}>
+            <Text size="lg" style={{ margin: '0 15px' }}>
               {quantity}
             </Text>
             <ActionIcon
@@ -297,7 +297,7 @@ export default function ViewUserProfile() {
       <HeaderMegaMenu />
       <StickyHeader />
       <Paper radius="md" p="xl" style={{ maxWidth: 800, margin: 'auto' }}>
-        <Group position="center" spacing="xs">
+        <Group>
           <Avatar src={user.photo} size={100} radius="xl" />
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -317,10 +317,10 @@ export default function ViewUserProfile() {
 
         <Divider my="lg" style={{ borderColor: '#e0e0e0' }} />
 
-        <Group direction="column" spacing="xs" px="lg">
+        <Group px="lg">
           <Group>
             <IconMail size={16} color="#333" />
-            <Text size="sm" weight={500} style={{ color: '#333' }}>
+            <Text size="sm" style={{ color: '#333' }}>
               Email:
             </Text>
             <Text size="sm" color="dimmed">
@@ -329,7 +329,7 @@ export default function ViewUserProfile() {
           </Group>
           <Group>
             <IconUser size={16} color="#333" />
-            <Text size="sm" weight={500} style={{ color: '#333' }}>
+            <Text size="sm" style={{ color: '#333' }}>
               Верификация:
             </Text>
             <Text size="sm" color={user.isVerified ? 'green' : 'red'}>
@@ -341,11 +341,11 @@ export default function ViewUserProfile() {
         {(user.description || user.product) && (
           <>
             <Divider my="lg" style={{ borderColor: '#e0e0e0' }} />
-            <Group direction="column" px="lg" spacing="xs">
+            <Group px="lg">
               {user.product && (
                 <Group>
                   <IconPackage size={16} color="#333" />
-                  <Text size="sm" weight={500} style={{ color: '#333' }}>
+                  <Text size="sm" style={{ color: '#333' }}>
                     Продукт:
                   </Text>
                   <Text size="sm" color="dimmed">
@@ -356,7 +356,7 @@ export default function ViewUserProfile() {
               {user.description && (
                 <Group>
                   <IconInfoCircle size={16} color="#333" />
-                  <Text size="sm" weight={500} style={{ color: '#333' }}>
+                  <Text size="sm" style={{ color: '#333' }}>
                     Описание:
                   </Text>
                   <Text size="sm" color="dimmed">
@@ -371,7 +371,7 @@ export default function ViewUserProfile() {
         {user.role !== 'user' && (
           <>
             <Divider my="lg" style={{ borderColor: '#e0e0e0' }} />
-            <Title align="center" order={4} style={{ color: '#333' }}>
+            <Title order={4} style={{ color: '#333' }}>
               Продукты пользователя
             </Title>
             {products.length > 0 ? (
@@ -401,7 +401,7 @@ export default function ViewUserProfile() {
                 ))}
               </SimpleGrid>
             ) : (
-              <Text align="center" color="dimmed" mt="md">
+              <Text color="dimmed" mt="md">
                 У пользователя пока нет продуктов.
               </Text>
             )}
@@ -409,7 +409,7 @@ export default function ViewUserProfile() {
         )}
 
         <Divider my="lg" style={{ borderColor: '#e0e0e0' }} />
-        <Text align="center" size="xs" color="dimmed" style={{ fontStyle: 'italic' }}>
+        <Text size="xs" color="dimmed" style={{ fontStyle: 'italic' }}>
           Профиль создан: {new Date(user.createdAt).toLocaleDateString()}
         </Text>
       </Paper>

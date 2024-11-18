@@ -1,5 +1,3 @@
-// components/UserManagement.js
-
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -10,7 +8,6 @@ import {
   Badge,
   Button,
   Card,
-  Center,
   Container,
   Group,
   Loader,
@@ -30,15 +27,25 @@ export default function UserManagement() {
   const [editingUserId, setEditingUserId] = useState(null);
   const [editedRole, setEditedRole] = useState('');
   const [confirmDeleteUserId, setConfirmDeleteUserId] = useState(null);
+  const [token, setToken] = useState(null);
 
-  const token = localStorage.getItem('token');
-
+  // Загружаем токен из localStorage
   useEffect(() => {
-    fetchUsers();
+    if (typeof window !== 'undefined') {
+      setToken(localStorage.getItem('token'));
+    }
   }, []);
+
+  // Загружаем пользователей после получения токена
+  useEffect(() => {
+    if (token) {
+      fetchUsers();
+    }
+  }, [token]);
 
   const fetchUsers = async () => {
     try {
+      setLoading(true);
       const response = await fetch('http://localhost:5001/api/auth/users', {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -58,9 +65,9 @@ export default function UserManagement() {
     }
   };
 
-  const handleRoleChange = (userId, newRole) => {
+  const handleRoleChange = (userId, currentRole) => {
     setEditingUserId(userId);
-    setEditedRole(newRole);
+    setEditedRole(currentRole);
   };
 
   const saveRoleChange = async (userId) => {
@@ -129,7 +136,7 @@ export default function UserManagement() {
       <StickyHeader />
       <Container size="lg" py="md">
         <Card shadow="0" radius="md" p="lg">
-          <Title order={3} align="center" mb="40">
+          <Title order={3} mb="40">
             Управление пользователями
           </Title>
           <ScrollArea>
@@ -147,12 +154,12 @@ export default function UserManagement() {
                 {users.map((user) => (
                   <tr key={user._id}>
                     <td>
-                      <Group spacing="sm">
+                      <Group>
                         <Avatar color="cyan" radius="xl">
                           <IconUser size={20} />
                         </Avatar>
                         <div>
-                          <Text weight={500}>
+                          <Text>
                             {user.firstName || '-'} {user.lastName || '-'}
                           </Text>
                           <Text size="xs" color="dimmed">
@@ -173,7 +180,7 @@ export default function UserManagement() {
                             { value: 'user', label: 'Пользователь' },
                           ]}
                           value={editedRole}
-                          onChange={(value) => setEditedRole(value)}
+                          onChange={setEditedRole}
                         />
                       ) : (
                         <Badge
@@ -200,7 +207,7 @@ export default function UserManagement() {
                     </td>
                     <td>
                       {editingUserId === user._id ? (
-                        <Group spacing="xs">
+                        <Group>
                           <ActionIcon color="green" onClick={() => saveRoleChange(user._id)}>
                             <IconCheck size={18} />
                           </ActionIcon>
@@ -209,7 +216,7 @@ export default function UserManagement() {
                           </ActionIcon>
                         </Group>
                       ) : (
-                        <Group spacing="xs">
+                        <Group>
                           <ActionIcon
                             color="blue"
                             onClick={() => handleRoleChange(user._id, user.role)}
@@ -237,7 +244,7 @@ export default function UserManagement() {
         centered
       >
         <Text>Вы уверены, что хотите удалить этого пользователя?</Text>
-        <Group position="right" mt="md">
+        <Group mt="md">
           <Button variant="default" onClick={() => setConfirmDeleteUserId(null)}>
             Отмена
           </Button>

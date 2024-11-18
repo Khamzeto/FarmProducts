@@ -195,7 +195,6 @@ export function HeaderMegaMenu() {
       <AuthModal
         opened={authModalOpened}
         onClose={() => setAuthModalOpened(false)}
-        isRegistering={isRegistering}
         onSuccessfulAuth={() => setIsAuthenticated(true)} // Добавляем callback для успешной авторизации
       />
     </Box>

@@ -8,15 +8,15 @@ import StickyHeader from '@/components/ui/StickyHeader/StickyHeader';
 function OrderSummaryItem({ item }) {
   const { image, title, price, quantity } = item;
   return (
-    <Group mt="md" position="apart" style={{ width: '100%' }}>
+    <Group mt="md" style={{ width: '100%' }}>
       <Image src={image} width={70} height={70} alt={title} radius="sm" />
-      <Text weight={600} size="sm" style={{ flex: 1, marginLeft: '10px' }}>
+      <Text size="sm" style={{ flex: 1, marginLeft: '10px' }}>
         {title}
       </Text>
-      <Text weight={500} size="sm">
+      <Text size="sm">
         {quantity} x {price} ₽
       </Text>
-      <Text weight={600} size="sm" style={{ marginRight: '10px' }}>
+      <Text size="sm" style={{ marginRight: '10px' }}>
         {price * quantity} ₽
       </Text>
     </Group>
@@ -88,25 +88,21 @@ export default function OrderPage() {
           Ваш заказ
         </Title>
         <Card padding="lg" radius="lg" style={{ marginBottom: '20px' }}>
-          <Text weight={600} size="lg">
-            Корзина
-          </Text>
+          <Text size="lg">Корзина</Text>
           {cartItems.map((item) => (
             <OrderSummaryItem key={item.id} item={item} />
           ))}
           <Divider my="lg" />
-          <Group position="apart">
-            <Text size="md" weight={600}>
-              Итого:
-            </Text>
-            <Text size="md" weight={600} color="teal">
+          <Group>
+            <Text size="md">Итого:</Text>
+            <Text size="md" color="teal">
               {totalPrice} ₽
             </Text>
           </Group>
         </Card>
 
         <Card padding="lg" radius="lg">
-          <Text weight={600} size="lg" mb="md">
+          <Text size="lg" mb="md">
             Контактные данные
           </Text>
           <Stack>

@@ -48,7 +48,7 @@ export default function CatalogListPage() {
   return (
     <>
       <HeaderMegaMenu />
-      <Box padding="xl" mb="40" mt="50" style={{ maxWidth: 600, margin: 'auto' }}>
+      <Box mb="40" mt="50" style={{ maxWidth: 600, margin: 'auto' }}>
         <Group justify="space-between" mb="md">
           <Title order={2} style={{ fontWeight: 700 }}>
             Каталоги
@@ -68,7 +68,7 @@ export default function CatalogListPage() {
 
         <Divider mb="lg" />
 
-        <Stack spacing="lg">
+        <Stack>
           {catalogs.length === 0 ? (
             <Center>
               <Text color="dimmed" size="md">
@@ -88,7 +88,7 @@ export default function CatalogListPage() {
                 }}
               >
                 <Group justify="space-between">
-                  <Text weight={600} size="md" style={{ display: 'flex', alignItems: 'center' }}>
+                  <Text size="md" style={{ display: 'flex', alignItems: 'center' }}>
                     <IconFolder size={20} color="#555" style={{ marginRight: 8 }} />
                     {catalog.name}
                   </Text>
@@ -104,7 +104,7 @@ export default function CatalogListPage() {
                     <IconTrash size={18} />
                   </ActionIcon>
                 </Group>
-                <Stack spacing="xs" mt="sm">
+                <Stack mt="sm">
                   {catalog.subcategories.map((subcategory, index) => (
                     <Text key={index} size="sm" style={{ color: '#555', paddingLeft: '24px' }}>
                       - {subcategory.name}

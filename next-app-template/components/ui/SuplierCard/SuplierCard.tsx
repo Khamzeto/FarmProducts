@@ -22,9 +22,7 @@ function SupplierCard({ userId, avatar, name, description, products }) {
       <Group align="center">
         <Avatar src={avatar} size="lg" radius="xl" />
         <div>
-          <Text weight={500} size="lg">
-            {name}
-          </Text>
+          <Text size="lg">{name}</Text>
           <Rating value={5} readOnly size="sm" />
           <Text size="sm" color="dimmed">
             {description}
@@ -32,7 +30,7 @@ function SupplierCard({ userId, avatar, name, description, products }) {
         </div>
       </Group>
 
-      <Group mt="50" spacing="xs" style={{ gap: '8px', justifyContent: 'space-between' }}>
+      <Group mt="50" style={{ gap: '8px', justifyContent: 'space-between' }}>
         {products.map((product, index) => (
           <Image
             key={index}

@@ -127,15 +127,15 @@ export default function ProductForm() {
         withBorder
         style={{ maxWidth: 700, margin: 'auto' }}
       >
-        <Title order={2} align="center" mb="md" style={{ fontWeight: 700, color: '#333' }}>
+        <Title order={2} mb="md" style={{ fontWeight: 700, color: '#333' }}>
           Добавить Новый Продукт
         </Title>
 
-        <Stack spacing="lg">
+        <Stack>
           <Divider label="Основная информация" labelPosition="center" />
 
           <TextInput
-            icon={<IconEdit />}
+            leftSection={<IconEdit />}
             label="Название продукта"
             placeholder="Введите название продукта"
             value={form.title}
@@ -144,7 +144,7 @@ export default function ProductForm() {
           />
 
           <FileInput
-            icon={<IconUpload />}
+            leftSection={<IconUpload />}
             label="Загрузить изображение"
             placeholder="Нажмите для загрузки изображения"
             onChange={handleImageUpload}
@@ -152,7 +152,7 @@ export default function ProductForm() {
           />
 
           <TextInput
-            icon={<IconTag />}
+            leftSection={<IconTag />}
             label="Автор"
             placeholder="Введите имя автора продукта"
             value={form.autor}
@@ -167,7 +167,6 @@ export default function ProductForm() {
               onChange={(value) => handleChange('price', value)}
               required
               min={0}
-              precision={2}
             />
 
             <NumberInput
@@ -176,19 +175,18 @@ export default function ProductForm() {
               value={form.oldPrice}
               onChange={(value) => handleChange('oldPrice', value)}
               min={0}
-              precision={2}
             />
           </Group>
 
           <Divider label="Скидка" labelPosition="center" />
 
-          <Group grow spacing="md">
+          <Group grow>
             <TextInput
               label="Скидка (%)"
               placeholder="Например: 10%"
               value={form.discount}
               onChange={(event) => handleChange('discount', event.currentTarget.value)}
-              icon={<IconDiscount2 />}
+              leftSection={<IconDiscount2 />}
             />
             <DatePickerInput
               label="Скидка действует до"

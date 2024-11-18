@@ -21,12 +21,10 @@ function FavoriteItem({ item, removeFavorite }) {
   const { id, image, title, price, weight } = item;
 
   return (
-    <Group mt="md" position="apart" style={{ width: '100%', alignItems: 'center' }}>
+    <Group mt="md" style={{ width: '100%', alignItems: 'center' }}>
       <Image src={image} width={70} height={70} alt={title} radius="sm" />
       <div style={{ flex: 1, marginLeft: '10px' }}>
-        <Text weight={700} style={{ fontSize: '1rem', lineHeight: 1.2 }}>
-          {title}
-        </Text>
+        <Text style={{ fontSize: '1rem', lineHeight: 1.2 }}>{title}</Text>
         <Text size="xs" color="dimmed" mt={4}>
           {price} ₽ / {weight}
         </Text>
@@ -128,10 +126,10 @@ export function Favorites() {
         boxShadow: '0 4px 12px rgba(0, 0, 0, 0.08)',
       }}
     >
-      <Text size="lg" weight={700} mb="sm" color="teal" align="center">
+      <Text size="lg" mb="sm" color="teal">
         Избранные товары
       </Text>
-      <Badge color="cyan" size="sm" radius="sm" variant="outline" mb="sm" align="center">
+      <Badge color="cyan" size="sm" radius="sm" variant="outline" mb="sm">
         Товары, которые вы хотите сохранить
       </Badge>
       <ScrollArea style={{ height: '300px', overflowY: 'auto' }} offsetScrollbars>
@@ -140,26 +138,24 @@ export function Favorites() {
             <FavoriteItem key={item.id} item={item} removeFavorite={removeFavorite} />
           ))
         ) : (
-          <Text color="dimmed" align="center" mt="lg">
+          <Text color="dimmed" mt="lg">
             У вас пока нет избранных товаров.
           </Text>
         )}
       </ScrollArea>
       <Divider my="lg" style={{ borderColor: '#d3d3d3' }} />
-      <Stack spacing="xs">
-        <Group position="apart">
+      <Stack>
+        <Group>
           <Text size="sm" color="dimmed">
             Кол-во товаров:
           </Text>
-          <Text size="sm" weight={600}>
-            {favoriteItems.length}
-          </Text>
+          <Text size="sm">{favoriteItems.length}</Text>
         </Group>
-        <Group position="apart">
+        <Group>
           <Text size="sm" color="dimmed">
             Общая стоимость:
           </Text>
-          <Text size="sm" weight={600} color="teal">
+          <Text size="sm" color="teal">
             {totalPrice} ₽
           </Text>
         </Group>

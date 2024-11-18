@@ -42,7 +42,7 @@ export default function ProductDetailPage() {
 
   const goBack = () => router.push('/catalog');
 
-  if (loading) return <LoadingOverlay visible={loading} overlayBlur={2} />;
+  if (loading) return <LoadingOverlay visible={loading} />;
 
   return (
     <>
@@ -84,7 +84,6 @@ export default function ProductDetailPage() {
                 objectFit: 'cover',
                 boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
               }}
-              withPlaceholder
             />
 
             {/* Product Information */}
@@ -105,8 +104,8 @@ export default function ProductDetailPage() {
                 {product?.description}
               </Text>
 
-              <Group mt="lg" align="center" spacing="sm">
-                <Text size="xl" weight={700} color="red">
+              <Group mt="lg" align="center">
+                <Text size="xl" color="red">
                   {product?.price} ₽
                 </Text>
                 {product?.oldPrice && (

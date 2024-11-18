@@ -83,14 +83,14 @@ export default function CatalogPage() {
       <HeaderMegaMenu />
 
       <StickyHeader />
-      <Box padding="xl" mt="40" style={{ maxWidth: 600, margin: 'auto' }}>
-        <Title order={2} align="center" mb="md" style={{ fontWeight: 700 }}>
+      <Box mt="40" style={{ maxWidth: 600, margin: 'auto' }}>
+        <Title order={2} mb="md" style={{ fontWeight: 700 }}>
           Создать Каталог
         </Title>
 
         <Divider label="Новая Категория" labelPosition="center" my="lg" />
 
-        <Stack spacing="md">
+        <Stack>
           <TextInput
             placeholder="Название категории"
             value={newCategory}
@@ -125,7 +125,7 @@ export default function CatalogPage() {
 
         <Divider label="Категории и Подкатегории" labelPosition="center" my="lg" />
 
-        <Stack spacing="md">
+        <Stack>
           {categories.map((category, index) => (
             <Paper
               key={index}
@@ -137,8 +137,8 @@ export default function CatalogPage() {
                 backgroundColor: '#f9f9f9',
               }}
             >
-              <Group position="apart">
-                <Text weight={600} size="md" style={{ display: 'flex', alignItems: 'center' }}>
+              <Group>
+                <Text size="md" style={{ display: 'flex', alignItems: 'center' }}>
                   <IconFolder size={20} color="#555" style={{ marginRight: 8 }} />
                   {category.name}
                 </Text>
@@ -164,7 +164,7 @@ export default function CatalogPage() {
                 )}
               </Group>
 
-              <Stack spacing="xs" mt="sm">
+              <Stack mt="sm">
                 {category.subcategories.map((subcategory, subIndex) => (
                   <Group key={subIndex} style={{ color: '#333' }}>
                     <IconChevronRight size={16} />

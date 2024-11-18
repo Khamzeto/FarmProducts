@@ -8,7 +8,7 @@ import StickyHeader from '@/components/ui/StickyHeader/StickyHeader';
 function OrderCard({ order }) {
   return (
     <Card shadow="sm" padding="lg" radius="md" style={{ marginBottom: '20px' }}>
-      <Group position="apart">
+      <Group>
         <Title order={4}>Заказ № {order._id}</Title>
         <Badge
           color={
@@ -25,7 +25,7 @@ function OrderCard({ order }) {
 
       <Divider my="sm" />
 
-      <Text weight={600}>Контактные данные:</Text>
+      <Text>Контактные данные:</Text>
       <Text>Имя: {order.buyerDetails.name}</Text>
       <Text>Телефон: {order.buyerDetails.phone}</Text>
       <Text>Адрес: {order.buyerDetails.address}</Text>
@@ -33,9 +33,9 @@ function OrderCard({ order }) {
 
       <Divider my="sm" />
 
-      <Text weight={600}>Товары:</Text>
+      <Text>Товары:</Text>
       {order.items.map((item, index) => (
-        <Group key={index} position="apart" style={{ width: '100%' }}>
+        <Group key={index} style={{ width: '100%' }}>
           <Text>Продукт: {item.productId?.title}</Text>
           <Text>Цена: {item.productId?.price} ₽</Text>
           <Text>Кол-во: {item.quantity}</Text>
@@ -45,7 +45,7 @@ function OrderCard({ order }) {
 
       <Divider my="sm" />
 
-      <Text weight={700}>Общая сумма: {order.totalAmount} ₽</Text>
+      <Text>Общая сумма: {order.totalAmount} ₽</Text>
     </Card>
   );
 }
@@ -88,7 +88,7 @@ export default function UserOrdersPage() {
           {orders.length > 0 ? (
             orders.map((order) => <OrderCard key={order._id} order={order} />)
           ) : (
-            <Text align="center" color="dimmed" mt="md">
+            <Text color="dimmed" mt="md">
               Заказы отсутствуют.
             </Text>
           )}

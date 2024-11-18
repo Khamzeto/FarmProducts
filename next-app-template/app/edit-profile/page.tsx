@@ -92,7 +92,7 @@ export default function EditProfile() {
       <HeaderMegaMenu />
       <StickyHeader />
       <Paper radius="md" p="xl" style={{ maxWidth: 600, margin: 'auto' }}>
-        <Title order={2} align="center" mb="lg" style={{ color: '#333' }}>
+        <Title order={2} mb="lg" style={{ color: '#333' }}>
           Редактировать Профиль
         </Title>
         <form onSubmit={form.onSubmit(handleSubmit)}>
@@ -118,14 +118,14 @@ export default function EditProfile() {
           <TextInput
             label="Имя"
             placeholder="Введите ваше имя"
-            icon={<IconUser size={14} />}
+            leftSection={<IconUser size={14} />}
             {...form.getInputProps('firstName')}
             required
           />
           <TextInput
             label="Фамилия"
             placeholder="Введите вашу фамилию"
-            icon={<IconUser size={14} />}
+            leftSection={<IconUser size={14} />}
             {...form.getInputProps('lastName')}
             required
             mt="sm"
@@ -133,7 +133,7 @@ export default function EditProfile() {
           <TextInput
             label="Продукт"
             placeholder="Введите название вашего продукта"
-            icon={<IconEdit size={14} />}
+            leftSection={<IconEdit size={14} />}
             {...form.getInputProps('product')}
             mt="sm"
           />
@@ -145,7 +145,7 @@ export default function EditProfile() {
             autosize
             minRows={3}
           />
-          <Group position="center" mt="xl">
+          <Group mt="xl">
             <Button type="submit" color="teal" radius="md">
               Сохранить изменения
             </Button>

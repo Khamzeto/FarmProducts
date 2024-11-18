@@ -108,7 +108,6 @@ export default function ProductModal({ product, isOpen, onClose }) {
               objectFit: 'cover',
               boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
             }}
-            withPlaceholder
           />
           <Box style={{ flex: 1 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -128,8 +127,8 @@ export default function ProductModal({ product, isOpen, onClose }) {
             <Text mt="md" size="sm" style={{ lineHeight: 1.6 }}>
               {product.description}
             </Text>
-            <Group mt="lg" align="center" spacing="sm">
-              <Text size="xl" weight={700} color="red">
+            <Group mt="lg" align="center">
+              <Text size="xl" color="red">
                 {product.price} ₽
               </Text>
               {product.oldPrice && (
@@ -185,7 +184,7 @@ export default function ProductModal({ product, isOpen, onClose }) {
                 >
                   <IconMinus size={16} />
                 </ActionIcon>
-                <Text weight={700} size="lg" style={{ margin: '0 15px' }}>
+                <Text size="lg" style={{ margin: '0 15px' }}>
                   {quantity}
                 </Text>
                 <ActionIcon

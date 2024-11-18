@@ -81,7 +81,7 @@ export default function AuthModal({ opened, onClose, onSuccessfulAuth }) {
         <Tabs.Panel value="login" pt="xs">
           {isVerificationSent ? (
             <>
-              <Text size="sm" align="center" mt="md">
+              <Text size="sm" mt="md">
                 Введите код, отправленный на email: {email}
               </Text>
               <TextInput
@@ -114,7 +114,7 @@ export default function AuthModal({ opened, onClose, onSuccessfulAuth }) {
         <Tabs.Panel value="register" pt="xs">
           {isVerificationSent ? (
             <>
-              <Text size="sm" align="center" mt="md">
+              <Text size="sm" mt="md">
                 Введите код, отправленный на email: {email}
               </Text>
               <TextInput
@@ -160,7 +160,7 @@ export default function AuthModal({ opened, onClose, onSuccessfulAuth }) {
       </Tabs>
 
       <Divider my="sm" />
-      <Text size="xs" color="dimmed" align="center">
+      <Text size="xs" color="dimmed">
         Мы отправим код подтверждения на указанный email.
       </Text>
     </Modal>

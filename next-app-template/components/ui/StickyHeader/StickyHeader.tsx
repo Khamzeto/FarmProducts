@@ -24,13 +24,15 @@ export function StickyHeader() {
   const [favoritesCount, setFavoritesCount] = useState(0);
   const [userRole, setUserRole] = useState('');
 
+  type CartItem = {
+    price: number;
+    quantity: number;
+  };
+
   const calculateTotalAmount = () => {
-    const cartData = JSON.parse(localStorage.getItem('cart')) || {};
+    const cartData: Record<string, CartItem> = JSON.parse(localStorage.getItem('cart') || '{}');
     const total = Object.values(cartData).reduce((sum, item) => {
-      if (item && item.price && item.quantity) {
-        return sum + item.price * item.quantity;
-      }
-      return sum;
+      return sum + item.price * item.quantity;
     }, 0);
     setTotalAmount(total);
   };
@@ -70,7 +72,7 @@ export function StickyHeader() {
         p="14"
         centered
       >
-        <ShoppingCart onClose={() => setCartModalOpen(false)} />
+        <ShoppingCart />
       </Modal>
 
       <Modal
@@ -122,7 +124,7 @@ export function StickyHeader() {
           >
             Доставка: все дни
           </Button>
-          <Group spacing="sm">
+          <Group>
             <Button variant="default" radius="md" onClick={() => setCartModalOpen(true)}>
               <IconShoppingCart />
               {totalAmount > 0 && (

@@ -127,22 +127,22 @@ function ProductCard({
         </ActionIcon>
       </Card.Section>
 
-      <Group position="apart" mt="md" mb="xs">
-        <Text weight={500}>{title}</Text>
+      <Group mt="md" mb="xs">
+        <Text>{title}</Text>
       </Group>
-      <Group spacing="xs">
+      <Group>
         <Text color="dimmed" size="xs">
           {description}
         </Text>
       </Group>
 
-      <Group mt="xs" spacing="xs">
+      <Group mt="xs">
         {oldPrice && (
           <Text color="dimmed" style={{ textDecoration: 'line-through' }}>
             {oldPrice} ₽
           </Text>
         )}
-        <Text weight={700} color="red" size="xl">
+        <Text color="red" size="xl">
           {price} ₽
         </Text>
       </Group>
@@ -181,7 +181,7 @@ function ProductCard({
           >
             <IconMinus size={16} />
           </ActionIcon>
-          <Text weight={700} size="lg" style={{ margin: '0 15px' }}>
+          <Text size="lg" style={{ margin: '0 15px' }}>
             {quantity}
           </Text>
           <ActionIcon

@@ -43,7 +43,7 @@ export default function CatalogPage() {
       <Box mt="30" mb="20" style={{ maxWidth: 1200, margin: 'auto', display: 'flex' }}>
         {/* Sidebar for categories */}
         <Paper p="20" radius="20" withBorder style={{ width: 250, marginRight: 20 }}>
-          <Title order={4} mb="sm" align="left">
+          <Title order={4} mb="sm">
             Категории
           </Title>
           <Stack mt="20">
@@ -51,7 +51,6 @@ export default function CatalogPage() {
               <Box key={category.id}>
                 <Group
                   onClick={() => toggleCategory(category.id)}
-                  position="apart"
                   style={{
                     cursor: 'pointer',
                     color: expandedCategories[category.id] ? '#10b981' : '#333',
@@ -71,7 +70,7 @@ export default function CatalogPage() {
                   )}
                 </Group>
                 <Collapse in={expandedCategories[category.id]}>
-                  <Stack spacing="xs" pl="md" mt="xs">
+                  <Stack pl="md" mt="xs">
                     {category.subcategories.length > 0 ? (
                       category.subcategories.map((subcategory) => (
                         <Text
@@ -98,7 +97,7 @@ export default function CatalogPage() {
 
         {/* Custom grid for highlighted categories */}
         <Box style={{ flexGrow: 1 }}>
-          <Title order={3} mb="md" align="left">
+          <Title order={3} mb="md">
             Каталог
           </Title>
           <div

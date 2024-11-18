@@ -237,11 +237,11 @@ export default function UserProfile() {
         size="lg"
       >
         <form onSubmit={form.onSubmit(handleUpdateProduct)}>
-          <Stack spacing="lg">
+          <Stack>
             <Divider label="Основная информация" labelPosition="center" />
 
             <TextInput
-              icon={<IconEdit />}
+              leftSection={<IconEdit />}
               label="Название продукта"
               placeholder="Введите название продукта"
               {...form.getInputProps('title')}
@@ -249,7 +249,7 @@ export default function UserProfile() {
             />
 
             <FileInput
-              icon={<IconUpload />}
+              leftSection={<IconUpload />}
               label="Загрузить изображение"
               placeholder="Нажмите для загрузки изображения"
               onChange={handleImageUpload}
@@ -267,7 +267,7 @@ export default function UserProfile() {
             )}
 
             <TextInput
-              icon={<IconTag />}
+              leftSection={<IconTag />}
               label="Автор"
               placeholder="Введите имя автора продукта"
               {...form.getInputProps('autor')}
@@ -280,7 +280,6 @@ export default function UserProfile() {
                 {...form.getInputProps('price')}
                 required
                 min={0}
-                precision={2}
               />
 
               <NumberInput
@@ -288,18 +287,17 @@ export default function UserProfile() {
                 placeholder="Введите старую цену"
                 {...form.getInputProps('oldPrice')}
                 min={0}
-                precision={2}
               />
             </Group>
 
             <Divider label="Скидка" labelPosition="center" />
 
-            <Group grow spacing="md">
+            <Group grow>
               <TextInput
                 label="Скидка (%)"
                 placeholder="Например: 10%"
                 {...form.getInputProps('discount')}
-                icon={<IconDiscount2 />}
+                leftSection={<IconDiscount2 />}
               />
               <DatePickerInput
                 label="Скидка действует до"
@@ -407,7 +405,7 @@ export default function UserProfile() {
               {...form.getInputProps('storageConditions')}
             />
 
-            <Group position="right" mt="md">
+            <Group mt="md">
               <Button variant="default" onClick={() => setEditModalOpen(false)}>
                 Отмена
               </Button>
@@ -420,7 +418,7 @@ export default function UserProfile() {
       </Modal>
 
       <Paper radius="md" p="xl" style={{ maxWidth: 800, margin: 'auto' }}>
-        <Group position="center" spacing="xs">
+        <Group>
           <Avatar src={user.photo} size={100} radius="xl" />
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -436,7 +434,7 @@ export default function UserProfile() {
               </Badge>
             </div>
             <Button
-              leftIcon={<IconEdit size={16} />}
+              leftSection={<IconEdit size={16} />}
               color="teal"
               variant="outline"
               size="xs"
@@ -451,10 +449,10 @@ export default function UserProfile() {
 
         <Divider my="lg" style={{ borderColor: '#e0e0e0' }} />
 
-        <Group direction="column" spacing="xs" px="lg">
+        <Group px="lg">
           <Group>
             <IconMail size={16} color="#333" />
-            <Text size="sm" weight={500} style={{ color: '#333' }}>
+            <Text size="sm" style={{ color: '#333' }}>
               Email:
             </Text>
             <Text size="sm" color="dimmed">
@@ -464,7 +462,7 @@ export default function UserProfile() {
 
           <Group>
             <IconUser size={16} color="#333" />
-            <Text size="sm" weight={500} style={{ color: '#333' }}>
+            <Text size="sm" style={{ color: '#333' }}>
               Верификация:
             </Text>
             <Text size="sm" color={user.isVerified ? 'green' : 'red'}>
@@ -476,11 +474,11 @@ export default function UserProfile() {
         {(user.description || user.product) && (
           <>
             <Divider my="lg" style={{ borderColor: '#e0e0e0' }} />
-            <Group direction="column" px="lg" spacing="xs">
+            <Group px="lg">
               {user.product && (
                 <Group>
                   <IconPackage size={16} color="#333" />
-                  <Text size="sm" weight={500} style={{ color: '#333' }}>
+                  <Text size="sm" style={{ color: '#333' }}>
                     Продукт:
                   </Text>
                   <Text size="sm" color="dimmed">
@@ -491,7 +489,7 @@ export default function UserProfile() {
               {user.description && (
                 <Group>
                   <IconInfoCircle size={16} color="#333" />
-                  <Text size="sm" weight={500} style={{ color: '#333' }}>
+                  <Text size="sm" style={{ color: '#333' }}>
                     Описание:
                   </Text>
                   <Text size="sm" color="dimmed">
@@ -507,7 +505,7 @@ export default function UserProfile() {
           <>
             <Divider my="lg" style={{ borderColor: '#e0e0e0' }} />
 
-            <Title align="center" order={4} style={{ color: '#333' }}>
+            <Title order={4} style={{ color: '#333' }}>
               Ваши продукты
             </Title>
 
@@ -523,12 +521,7 @@ export default function UserProfile() {
                     <Card.Section>
                       <Image src={product.image} alt={product.title} height={150} fit="cover" />
                     </Card.Section>
-                    <Text
-                      weight={600}
-                      size="sm"
-                      mt="xs"
-                      style={{ color: '#333', fontSize: '0.9rem' }}
-                    >
+                    <Text size="sm" mt="xs" style={{ color: '#333', fontSize: '0.9rem' }}>
                       {product.title}
                     </Text>
                     <Text
@@ -539,8 +532,8 @@ export default function UserProfile() {
                     >
                       {product.description || 'Описание отсутствует'}
                     </Text>
-                    <Group position="apart" mt="xs" spacing="xs">
-                      <Text size="sm" weight={600} color="green" style={{ fontSize: '0.9rem' }}>
+                    <Group mt="xs">
+                      <Text size="sm" color="green" style={{ fontSize: '0.9rem' }}>
                         {product.price} ₽
                       </Text>
                       {product.oldPrice && (
@@ -556,7 +549,7 @@ export default function UserProfile() {
                         </Text>
                       )}
                     </Group>
-                    <Group mt="sm" position="center" spacing="xs">
+                    <Group mt="sm">
                       <Button
                         variant="outline"
                         color="blue"
@@ -580,7 +573,7 @@ export default function UserProfile() {
                 ))}
               </SimpleGrid>
             ) : (
-              <Text align="center" color="dimmed" mt="md">
+              <Text color="dimmed" mt="md">
                 У пользователя пока нет продуктов.
               </Text>
             )}
@@ -589,7 +582,7 @@ export default function UserProfile() {
 
         <Divider my="lg" style={{ borderColor: '#e0e0e0' }} />
 
-        <Text align="center" size="xs" color="dimmed" style={{ fontStyle: 'italic' }}>
+        <Text size="xs" color="dimmed" style={{ fontStyle: 'italic' }}>
           Профиль создан: {new Date(user.createdAt).toLocaleDateString()}
         </Text>
       </Paper>

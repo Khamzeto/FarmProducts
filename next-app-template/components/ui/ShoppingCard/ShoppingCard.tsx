@@ -23,16 +23,14 @@ function CartItem({ item, updateQuantity, removeItem }) {
   const handleDecrement = () => updateQuantity(id, quantity - 1);
 
   return (
-    <Group mt="md" position="apart" style={{ width: '100%' }}>
+    <Group mt="md" style={{ width: '100%' }}>
       <Image src={image} width={70} height={70} alt={title} radius="sm" />
       <div style={{ flex: 1, marginLeft: '10px' }}>
-        <Text weight={600} style={{ fontSize: '1rem' }}>
-          {title}
-        </Text>
+        <Text style={{ fontSize: '1rem' }}>{title}</Text>
         <Text size="xs" color="dimmed" mt={4}>
           {price} ₽ / {weight}
         </Text>
-        <Group mt="xs" spacing="xs" align="center">
+        <Group mt="xs" align="center">
           <ActionIcon
             onClick={handleDecrement}
             disabled={quantity === 1}
@@ -42,15 +40,13 @@ function CartItem({ item, updateQuantity, removeItem }) {
           >
             <IconMinus size={14} />
           </ActionIcon>
-          <Text weight={500} size="sm">
-            {quantity}
-          </Text>
+          <Text size="sm">{quantity}</Text>
           <ActionIcon onClick={handleIncrement} variant="light" size="sm" color="teal">
             <IconPlus size={14} />
           </ActionIcon>
         </Group>
       </div>
-      <Text weight={600} size="sm" style={{ marginRight: '10px' }}>
+      <Text size="sm" style={{ marginRight: '10px' }}>
         {price * quantity} ₽
       </Text>
       <ActionIcon onClick={() => removeItem(id)} color="red" variant="subtle">
@@ -100,7 +96,6 @@ export function ShoppingCart() {
       }
     });
 
-    setTotalWeight(weight.toFixed(2));
     setTotalPrice(price);
     setTotalQuantity(quantity);
   };
@@ -151,7 +146,7 @@ export function ShoppingCart() {
         boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
       }}
     >
-      <Text size="lg" weight={700} mb="sm">
+      <Text size="lg" mb="sm">
         Корзина
       </Text>
       <Badge
@@ -175,28 +170,24 @@ export function ShoppingCart() {
       </ScrollArea>
 
       <Divider my="lg" style={{ borderColor: '#e9ecef' }} />
-      <Stack spacing="xs">
-        <Group position="apart">
+      <Stack>
+        <Group>
           <Text size="sm" color="dimmed">
             Кол-во товаров:
           </Text>
-          <Text size="sm" weight={600}>
-            {totalQuantity}
-          </Text>
+          <Text size="sm">{totalQuantity}</Text>
         </Group>
-        <Group position="apart">
+        <Group>
           <Text size="sm" color="dimmed">
             Вес посылки:
           </Text>
-          <Text size="sm" weight={600}>
-            {totalWeight} кг
-          </Text>
+          <Text size="sm">{totalWeight} кг</Text>
         </Group>
-        <Group position="apart">
+        <Group>
           <Text size="sm" color="dimmed">
             Стоимость продуктов:
           </Text>
-          <Text size="sm" weight={600} color="teal">
+          <Text size="sm" color="teal">
             {totalPrice} ₽
           </Text>
         </Group>
@@ -217,7 +208,7 @@ export function ShoppingCart() {
       >
         Оформить заказ
       </Button>
-      <Text align="center" mt="sm" size="xs" color="dimmed">
+      <Text mt="sm" size="xs" color="dimmed">
         Минимальная сумма заказа 900 ₽
       </Text>
       <Button radius="lg" variant="subtle" color="red" fullWidth mt="xs" onClick={clearCart}>
