@@ -11,13 +11,9 @@ const allowedOrigins = [
 ];
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        return callback(null, true);
-      }
-      callback(new Error('Не разрешено политикой CORS'));
-    },
-    credentials: true,
+    origin: 'https://farm-front-15x1.vercel.app', // Ваш фронтенд
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Разрешенные HTTP-методы
+    credentials: true, // Если требуется передача cookies
   })
 );
 
