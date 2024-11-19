@@ -6,12 +6,18 @@ const app = express();
 const PORT = 5001; // Set your server's port here
 const MONGO_URI = 'mongodb://localhost:27017/your_database_name'; // Replace with your MongoDB URI
 
-// Настройка CORS
+const allowedOrigins = [
+  'https://farm-front-15x1.vercel.app', // Ваш фронтенд
+];
 app.use(
   cors({
-    origin: 'https://farm-front-15x1.vercel.app', // Ваш фронтенд
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Разрешенные HTTP-методы
-    credentials: true, // Если требуется передача cookies
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      callback(new Error('Не разрешено политикой CORS'));
+    },
+    credentials: true,
   })
 );
 
