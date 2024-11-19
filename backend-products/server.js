@@ -9,14 +9,24 @@ const MONGO_URI = 'mongodb://localhost:27017/your_database_name'; // Replace wit
 const allowedOrigins = [
   'https://farm-front-15x1.vercel.app', // Ваш фронтенд
 ];
+
+// Настройка CORS
 app.use(
   cors({
-    origin: 'https://farm-front-15x1.vercel.app', // Ваш фронтенд
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Разрешенные HTTP-методы
+    origin: (origin, callback) => {
+      // Разрешить запросы без источника (например, мобильные приложения или CURL)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true); // Разрешить запрос
+      } else {
+        callback(new Error('Не разрешено политикой CORS')); // Отклонить запрос
+      }
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Разрешённые методы
     credentials: true, // Если требуется передача cookies
   })
 );
-
 // Подключение к MongoDB
 mongoose
   .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
