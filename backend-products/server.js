@@ -7,7 +7,7 @@ const PORT = 5001; // Set your server's port here
 const MONGO_URI = 'mongodb://localhost:27017/your_database_name'; // Replace with your MongoDB URI
 
 const allowedOrigins = [
-  'https://farm-front-15x1.vercel.app', // Ваш фронтенд
+  'https://farm-front-three.vercel.app', // Ваш фронтенд
 ];
 
 // Настройка CORS
